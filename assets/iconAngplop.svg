@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="82.001" height="96" viewBox="0 0 82.001 96">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Subtraction_17" data-name="Subtraction 17" d="M38.117,34.445h0l-.1-.059L0,11.413V0H76.234V11.412Z" transform="translate(0)" fill="#a7adec"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="1" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#a7adec" stop-opacity="0"/>
+      <stop offset="1" stop-color="#7d85d5"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#a7adec"/>
+      <stop offset="1" stop-color="#7d85d5"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_6953" data-name="Group 6953" transform="translate(-139 -223)">
+    <g id="Mask_Group_14" data-name="Mask Group 14" transform="translate(141.883 223)" clip-path="url(#clip-path)">
+      <g id="Group_6952" data-name="Group 6952" transform="translate(7.258 0.005)">
+        <path id="Path_1607" data-name="Path 1607" d="M1.9,0,22,.042a1.924,1.924,0,0,1,1.911,1.925L24,45.057a1.9,1.9,0,0,1-1.9,1.917L2,46.931A1.924,1.924,0,0,1,.09,45.006L0,1.917A1.9,1.9,0,0,1,1.9,0Z" transform="matrix(0.966, 0.259, -0.259, 0.966, 38.53, 0)" fill="#e5e7f7"/>
+        <path id="Intersection_12" data-name="Intersection 12" d="M3.677,40.476A5,5,0,0,1,.17,34.352L9.3,0h1.592a5,5,0,0,1,5,5V41.958a4.988,4.988,0,0,1-.309,1.735Z" transform="translate(27.97 6.171)" opacity="0.05"/>
+        <path id="Path_1606" data-name="Path 1606" d="M1.906,0H21.994A1.914,1.914,0,0,1,23.9,1.922V45.036a1.914,1.914,0,0,1-1.906,1.922H1.906A1.914,1.914,0,0,1,0,45.036V1.922A1.914,1.914,0,0,1,1.906,0Z" transform="translate(17.672 4.633)" fill="#f2f3fb"/>
+        <path id="Intersection_11" data-name="Intersection 11" d="M5,41.184a5,5,0,0,1-5-5V1.09L3.4.172A4.954,4.954,0,0,1,9.468,3.707l9.486,35.7A5.031,5.031,0,0,1,19.1,41.18c-.067,0-.134,0-.2,0Z" transform="translate(17.672 10.407)" opacity="0.05"/>
+        <path id="Path_1605" data-name="Path 1605" d="M2,.042,22.1,0A1.9,1.9,0,0,1,24,1.917l-.09,43.09A1.924,1.924,0,0,1,22,46.931l-20.1.042A1.9,1.9,0,0,1,0,45.057L.09,1.967A1.924,1.924,0,0,1,2,.042Z" transform="matrix(0.966, -0.259, 0.259, 0.966, 0, 14.349)" fill="#fff"/>
+      </g>
+    </g>
+    <path id="Path_1594" data-name="Path 1594" d="M82,3.063V67.222A12.274,12.274,0,0,1,69.7,79.47H12.3A12.274,12.274,0,0,1,0,67.222v-64A3.075,3.075,0,0,1,4.653.595l.02.012L40.91,22.252l.09.055C78.215,4.143,82,2.122,82,3.063Z" transform="translate(139 239.409)" fill="#fff"/>
+    <path id="Intersection_10" data-name="Intersection 10" d="M41.279,76.109a6.267,6.267,0,0,1,.108-4.442l.027-.064L54.271,39.488,59.98,25.226,46.924,33.137,28.878,44.07q-.411.224-.788.479L10.018,55.5v-.016l-.093.075-1.263.764a6.026,6.026,0,0,1-2.51.542A6.182,6.182,0,0,1,0,50.652V47.113l19.361-11.73,5.623-3.406L58.376,11.75l9.24-5.591,2.172-1.315L76.857.555l.891-.545L77.771,0V13.922l-.278.7L72.981,25.876,58.717,61.52,56.51,67.03,52.877,76.1l0,.006Zm-8.45-30.691a6.152,6.152,0,1,1,6.152,6.211A6.182,6.182,0,0,1,32.829,45.418Z" transform="translate(143.229 242.771)" opacity="0.2" fill="url(#linear-gradient)"/>
+    <path id="Union_21" data-name="Union 21" d="M47.113,79.591a6.146,6.146,0,0,1-5.7-8.482l.027-.064L54.312,39.27l5.713-14.111L46.959,32.987,28.9,43.8q-.41.221-.788.473L10.025,55.111v-.017l-.093.074-1.264.756a6.088,6.088,0,0,1-2.512.537A6.152,6.152,0,0,1,0,50.315v-3.5L19.375,35.209,25,31.839,58.421,11.825l9.248-5.531,2.173-1.3L76.915.748l.891-.539a3.078,3.078,0,0,1,3.953,4.064L78.7,11.825l-1.149,2.837L73.037,25.8,58.761,61.069,56.553,66.52,52.916,75.5l-.193.478-1.465,3.617ZM34.849,47.181A6.147,6.147,0,1,1,41,53.327,6.147,6.147,0,0,1,34.849,47.181Z" transform="translate(139 239.408)" fill="url(#linear-gradient-2)"/>
+  </g>
+</svg>
