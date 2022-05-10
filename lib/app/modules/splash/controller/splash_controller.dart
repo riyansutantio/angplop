@@ -28,9 +28,11 @@ class SplashController extends GetxController {
   final boxUser = GetStorage();
 
   checkStateUser() async {
-    //logger.i(boxUser.read(tokenBearer));
-    // await Future.delayed(const Duration(seconds: 2))
-    //     .whenComplete(() => boxUser.read(tokenBearer) == null ? Get.offAllNamed(Routes.SESSION) : Get.to(HomeView()));
+    logger.i(boxUser.read(tokenBearer));
+    await Future.delayed(const Duration(seconds: 2)).whenComplete(() =>
+        boxUser.read(tokenBearer) == null
+            ? Get.offAllNamed(Routes.AUTH)
+            : Get.to(HomeView()));
 
     Future.delayed(const Duration(seconds: 2))
         .whenComplete(() => Get.off(AuthView()));

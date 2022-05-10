@@ -1,8 +1,13 @@
+import 'package:angplop/app/modules/auth/controllers/auth_controller.dart';
+import 'package:angplop/app/modules/auth/provider/auth_provider.dart';
+import 'package:angplop/app/modules/home/provider/home_provider.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  HomeProvider? homeProvider;
+  HomeController({required this.homeProvider});
 
+  final AuthController authController = Get.put(AuthController(authProvider: AuthProvider()));
   final count = 0.obs;
   @override
   void onInit() {

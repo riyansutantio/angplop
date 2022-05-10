@@ -3,19 +3,20 @@ import 'dart:io';
 import 'package:angplop/app/modules/auth/bindings/auth_binding.dart';
 import 'package:angplop/app/modules/auth/controllers/auth_controller.dart';
 import 'package:angplop/app/modules/auth/provider/auth_provider.dart';
-import 'package:angplop/app/modules/auth/views/forgot_password_view.dart';
+import 'package:angplop/app/modules/auth/views/auth_view.dart';
 import 'package:angplop/app/modules/home/views/home_view.dart';
 import 'package:angplop/app/modules/sign_up/views/sign_up_view.dart';
 import 'package:angplop/app/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class AuthView extends GetView<AuthController> {
+class ForgotPasswordView extends GetView<AuthController> {
   final AuthController authController =
       Get.put(AuthController(authProvider: AuthProvider()));
   @override
@@ -38,25 +39,8 @@ class AuthView extends GetView<AuthController> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(
-                                    0,
-                                    MediaQuery.of(context).size.width / 6,
-                                    0,
-                                    MediaQuery.of(context).size.width / 15),
-                                child: Image.asset('assets/iconAuth.png'),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(0),
-                                child:
-                                    SvgPicture.asset('assets/angplopText.svg'),
-                              )
-                            ],
-                          ),
+                        SizedBox(
+                          height: MediaQuery.of(context).padding.top,
                         ),
                         Container(
                           padding: EdgeInsets.all(
@@ -64,7 +48,7 @@ class AuthView extends GetView<AuthController> {
                           child: Column(
                             children: [
                               Text(
-                                "Selamat Datang",
+                                "Forgot Password",
                                 style: GoogleFonts.nunito(
                                     fontSize: 24,
                                     color: Colors.white,
@@ -76,8 +60,15 @@ class AuthView extends GetView<AuthController> {
                                         MediaQuery.of(context).size.width / 10),
                                 child: TextFormField(
                                   style: const TextStyle(color: Colors.white),
-                                  onFieldSubmitted: (val) {},
-                                  controller: authController.emailController,
+                                  onFieldSubmitted: (val) {
+                                    authController.forgotEmailController.text =
+                                        val.toString();
+                                    logger.d(val);
+                                    logger.d(authController
+                                        .forgotEmailController.text);
+                                  },
+                                  controller:
+                                      authController.forgotEmailController,
                                   decoration: InputDecoration(
                                       suffixIcon: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -110,48 +101,11 @@ class AuthView extends GetView<AuthController> {
                                 padding: EdgeInsets.only(
                                     top:
                                         MediaQuery.of(context).size.width / 20),
-                                child: TextFormField(
-                                  style: const TextStyle(color: Colors.white),
-                                  controller: authController.passwordController,
-                                  onFieldSubmitted: (val) {},
-                                  obscureText: true,
-                                  enableSuggestions: false,
-                                  autocorrect: false,
-                                  decoration: InputDecoration(
-                                      suffixIcon: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: SvgPicture.asset(
-                                            'assets/iconPass.svg'),
-                                      ),
-                                      fillColor:
-                                          HexColor('#5963BC').withOpacity(0.5),
-                                      filled: true,
-                                      hintText: 'Password',
-                                      hintStyle: TextStyle(
-                                          color: Colors.white.withOpacity(0.7)),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            width: 3,
-                                            color: HexColor('#5963BC')
-                                                .withOpacity(0.5)),
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            width: 3,
-                                            color: HexColor('#5963BC')
-                                                .withOpacity(0.5)),
-                                        borderRadius: BorderRadius.circular(15),
-                                      )),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top:
-                                        MediaQuery.of(context).size.width / 20),
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    authController.login();
+                                    authController.forgotPassword();
+                                    SystemChannels.textInput
+                                        .invokeMethod('TextInput.hide');
                                   },
                                   style: ElevatedButton.styleFrom(
                                       shape: RoundedRectangleBorder(
@@ -167,7 +121,7 @@ class AuthView extends GetView<AuthController> {
                                         width: 15,
                                       ),
                                       Text(
-                                        "Masuk",
+                                        "Kirim",
                                         style: GoogleFonts.nunito(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold,
@@ -178,24 +132,6 @@ class AuthView extends GetView<AuthController> {
                                   ),
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () {
-                                  Get.to(() => ForgotPasswordView());
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      top: MediaQuery.of(context).size.height *
-                                          0.05),
-                                  child: Text(
-                                    "Anda lupa password?",
-                                    style: GoogleFonts.nunito(
-                                      fontWeight: FontWeight.normal,
-                                      fontSize: 15,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              )
                             ],
                           ),
                         ),
@@ -208,7 +144,7 @@ class AuthView extends GetView<AuthController> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 0),
                                 child: Text(
-                                  "Belum punya akun?",
+                                  "Sudah ingat?",
                                   style: GoogleFonts.nunito(
                                     fontSize: 15,
                                     color: Colors.white,
@@ -218,7 +154,7 @@ class AuthView extends GetView<AuthController> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Get.to(() => SignUpView());
+                                  Get.to(() => AuthView());
                                 },
                                 child: Container(
                                   padding:
@@ -227,7 +163,7 @@ class AuthView extends GetView<AuthController> {
                                     padding:
                                         const EdgeInsets.fromLTRB(0, 10, 0, 10),
                                     child: Text(
-                                      "Daftar Sekarang",
+                                      "Login sekarang",
                                       style: GoogleFonts.nunito(
                                           fontSize: 15,
                                           color: Colors.white,
@@ -249,14 +185,17 @@ class AuthView extends GetView<AuthController> {
                     ),
                   ),
                 ),
-                (controller.isLoading.value == true)
+                (controller.isLoadingForgotPassword.value == true)
                     ? Container(
                         color: HexColor('#5963BC').withOpacity(0.3),
                         height: MediaQuery.of(context).size.height,
-                        child: const SpinKitWave(color: Colors.white),
+                        child: const SpinKitWave(
+                          color: Colors.white,
+                          size: 50,
+                        ),
                       )
-                    : SizedBox(
-                        height: 1,
+                    : const SizedBox(
+                        height: 0,
                       )
               ],
             ),

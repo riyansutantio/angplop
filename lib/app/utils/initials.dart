@@ -4,18 +4,18 @@ import 'package:hexcolor/hexcolor.dart';
 var colorAngplop = HexColor('#7D85D5');
 
 ///User Account
-const emailGoogle = 'emailGoogle';
-const uidGoogle = 'uidGoogle';
+const email = 'email';
+const password = 'password';
 const tokenBearer = 'tokenBearer';
 
-///Price Initial
-const priceInit = 'priceInit';
-const phoneNumberVerification = 'phoneNumberVerification';
-const orderIdTrx = 'orderIdTrx';
-const orderIdTrxCreated = 'orderIdTrxCreated';
+// ///Price Initial
+// const priceInit = 'priceInit';
+// const phoneNumberVerification = 'phoneNumberVerification';
+// const orderIdTrx = 'orderIdTrx';
+// const orderIdTrxCreated = 'orderIdTrxCreated';
 
-const isPayment = 'isPayment';
+// const isPayment = 'isPayment';
 
-/// true paid, false waiting payment
+// /// true paid, false waiting payment
 
-const roleUser = 'roleUser'; /// 1.admin 2.paymentNoteMeter 3.noteMeter 4.payment
+// const roleUser = 'roleUser'; /// 1.admin 2.paymentNoteMeter 3.noteMeter 4.payment

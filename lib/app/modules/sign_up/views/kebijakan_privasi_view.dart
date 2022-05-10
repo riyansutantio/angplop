@@ -1,18 +1,19 @@
-import 'package:angplop/app/modules/sign_up/views/kebijakan_privasi_view.dart';
+import 'package:angplop/app/modules/auth/views/auth_view.dart';
+import 'package:angplop/app/modules/sign_up/bindings/sign_up_binding.dart';
+import 'package:angplop/app/modules/sign_up/provider/signUp_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:html/dom.dart' as dom;
+
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import 'package:angplop/app/modules/sign_up/provider/signUp_provider.dart';
-
+import '../../home/views/home_view.dart';
 import '../controllers/sign_up_controller.dart';
 
-class SyaratKetentuanView extends GetView<SignUpController> {
-  var flutterWebviewPlugin;
+class KebijakanPrivasiView extends GetView<SignUpController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SignUpController>(
@@ -45,7 +46,7 @@ class SyaratKetentuanView extends GetView<SignUpController> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "Syarat dan Ketentuan",
+                            "Kebijakan Privasi",
                             style: GoogleFonts.nunito(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
@@ -79,10 +80,7 @@ class SyaratKetentuanView extends GetView<SignUpController> {
               child: SingleChildScrollView(
                 child: Obx(
                   () => Html(
-                    data: controller.termResult.value,
-                    onLinkTap: (url, _, __, ___) {
-                      Get.to(() => KebijakanPrivasiView());
-                    },
+                    data: controller.privacyResult.value,
                     style: {
                       "h1": Style(
                         color: HexColor('#6D8DAD'),
@@ -91,16 +89,12 @@ class SyaratKetentuanView extends GetView<SignUpController> {
                       "p": Style(
                         fontFamily: 'Nunito',
                         fontSize: FontSize(15),
-                        color: HexColor('#6D8DAD'),
-                      ),
-                      "ol": Style(
-                        fontFamily: 'Nunito',
-                        color: HexColor('#6D8DAD'),
+                        color: HexColor('#9DB6CF'),
                       ),
                       "li": Style(
                         fontFamily: 'Nunito',
                         fontSize: FontSize(15),
-                        color: HexColor('#6D8DAD'),
+                        color: HexColor('#9DB6CF'),
                       ),
                       "h3": Style(
                         fontFamily: 'Nunito',
@@ -109,7 +103,7 @@ class SyaratKetentuanView extends GetView<SignUpController> {
                       "div": Style(
                         fontFamily: 'Nunito',
                         fontSize: FontSize(15),
-                        color: HexColor('#6D8DAD'),
+                        color: HexColor('#9DB6CF'),
                       ),
                       "b": Style(
                         fontFamily: 'Nunito',

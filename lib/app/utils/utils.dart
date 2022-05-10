@@ -65,3 +65,8 @@ String rupiah(value, {String separator = '.', String trailing = ''}) {
           .replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}${separator}') +
       trailing;
 }
+
+Future<bool> willPopWithFuncOnly({Future<void>? func}) async {
+  await func;
+  return false;
+}

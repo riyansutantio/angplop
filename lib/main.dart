@@ -12,7 +12,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setPreferredOrientations(
   //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-
+  FlavorConfig(
+    color: Colors.red,
+    location: BannerLocation.bottomStart,
+    variables: {
+      "baseUrl": "https://api.angplop.tbrdev.my.id/",
+    },
+  );
   runApp(
     FlavorBanner(
       color: Colors.red,

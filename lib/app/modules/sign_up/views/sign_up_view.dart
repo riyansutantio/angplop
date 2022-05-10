@@ -4,6 +4,7 @@ import 'package:angplop/app/modules/sign_up/provider/signUp_provider.dart';
 import 'package:angplop/app/modules/sign_up/views/syarat_ketentuan_view.dart';
 import 'package:angplop/app/widgets/snackBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 import '../../home/views/home_view.dart';
 import '../controllers/sign_up_controller.dart';
+import 'kebijakan_privasi_view.dart';
 
 class SignUpView extends GetView<SignUpController> {
   @override
@@ -34,7 +36,7 @@ class SignUpView extends GetView<SignUpController> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.back();
+                        Get.off(() => AuthView());
                       },
                       child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -51,21 +53,22 @@ class SignUpView extends GetView<SignUpController> {
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(color: HexColor('#7D85D5')),
             child: SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     padding:
                         EdgeInsets.all(MediaQuery.of(context).size.width / 20),
                     child: Column(
                       children: [
-                        Text(
+                        const Text(
                           "Mendaftar",
-                          style: GoogleFonts.nunito(
-                              fontSize: 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Colors.white,
+                          ),
                         ),
                         const SizedBox(
                           height: 10,
@@ -81,7 +84,8 @@ class SignUpView extends GetView<SignUpController> {
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.width / 20),
                           child: TextFormField(
-                            onFieldSubmitted: (val) {},
+                            style: const TextStyle(color: Colors.white),
+                            controller: controller.namaUserController,
                             decoration: InputDecoration(
                                 suffixIcon: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -113,7 +117,8 @@ class SignUpView extends GetView<SignUpController> {
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.width / 20),
                           child: TextFormField(
-                            onFieldSubmitted: (val) {},
+                            controller: controller.emailUserController,
+                            style: const TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 suffixIcon: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -145,7 +150,8 @@ class SignUpView extends GetView<SignUpController> {
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.width / 20),
                           child: TextFormField(
-                            onFieldSubmitted: (val) {},
+                            style: const TextStyle(color: Colors.white),
+                            controller: controller.passwordUserController,
                             obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
@@ -180,7 +186,9 @@ class SignUpView extends GetView<SignUpController> {
                           padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.width / 20),
                           child: TextFormField(
-                            onFieldSubmitted: (val) {},
+                            style: const TextStyle(color: Colors.white),
+                            controller:
+                                controller.passwordConfirmUserController,
                             obscureText: true,
                             enableSuggestions: false,
                             autocorrect: false,
@@ -253,6 +261,8 @@ class SignUpView extends GetView<SignUpController> {
                                               child: Text(
                                                 "Syarat dan Ketentuan",
                                                 style: GoogleFonts.nunito(
+                                                    decoration: TextDecoration
+                                                        .underline,
                                                     fontSize: 15,
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.white),
@@ -267,12 +277,38 @@ class SignUpView extends GetView<SignUpController> {
                                             ),
                                           ],
                                         ),
-                                        Text(
-                                          "Angplop",
-                                          style: GoogleFonts.nunito(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.normal,
-                                              color: Colors.white),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "Angplop serta ",
+                                              style: GoogleFonts.nunito(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Colors.white),
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {
+                                                Get.to(() =>
+                                                    KebijakanPrivasiView());
+                                              },
+                                              child: Text(
+                                                "Kebijakan privasi",
+                                                style: GoogleFonts.nunito(
+                                                    decoration: TextDecoration
+                                                        .underline,
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                            Text(
+                                              "nya",
+                                              style: GoogleFonts.nunito(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.normal,
+                                                  color: Colors.white),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ))
@@ -284,12 +320,21 @@ class SignUpView extends GetView<SignUpController> {
                                 top: MediaQuery.of(context).size.width / 20),
                             child: ElevatedButton(
                               onPressed: () {
-                                controller.checkboxStatus.value == true
-                                    ? Get.to(() => HomeView())
-                                    : snackBarNotificationFailed(
-                                        title:
-                                            "Harus menyetujui syarat dan ketentuan");
-                                ;
+                                if (controller.checkboxStatus.value == true) {
+                                  if (controller.passwordUserController.text !=
+                                      controller.passwordUserController.text) {
+                                    snackBarNotificationFailed(
+                                        title: "Password harus sama");
+                                  } else {
+                                    SystemChannels.textInput
+                                        .invokeMethod('TextInput.hide');
+                                    controller.addUser();
+                                  }
+                                } else {
+                                  snackBarNotificationFailed(
+                                      title:
+                                          "Harus menyetujui syarat dan ketentuan");
+                                }
                               },
                               style: ElevatedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
